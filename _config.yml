@@ -1,22 +1,22 @@
 # Site settings
-title: Wblearn Blog
-SEOTitle: Wblearn的博客 | Wblearn Blog
+title: zjzsoft Blog
+SEOTitle: zjzsoft的博客 | zjzsoft Blog
 header-img: img/home-bg-art.jpg
-email: 1275660493@qq.com
-description: "@wblearn,不要让任何事情成为你不去学习的理由！"
-keyword: "wblearn, @wblearn, wblearn的博客,wblearn Blog, 博客, 个人网站, 互联网"
-url: "http://wblearn.github.io/"              # your host, for absolute URL
+email: 291473238@qq.com
+description: "@zjzsoft,不要让任何事情成为你不去学习的理由！"
+keyword: "zjzsoft, @zjzsoft, zjzsoft的博客,zjzsoft Blog, 博客, 个人网站, 互联网"
+url: "http://zjzsoft.github.io/"              # your host, for absolute URL
 baseurl: ""                             # for example, '/blog' if your blog hosted on 'host/blog'
 
 
 
 # SNS settings
 RSS: false
-weibo_username:     wudalanggd
-csdn_username:     wudalang_gd
-github_username:    wblearn
-#twitter_username:  wblearn
-jianshu_username:  48599dc7ef1b
+weibo_username:     zjzsoft
+csdn_username:     zjzsoft
+github_username:    zjzsoft
+#twitter_username:  zjzsoft
+jianshu_username:  zjzsoft
 sv_username: study-video
 # linkedin_username:  firstname-lastname-idxxxx
 
@@ -58,7 +58,7 @@ kramdown:
 #disqus_username: _your_disqus_short_name_
 
 # Duoshuo settings
-duoshuo_username: wblearnblog
+duoshuo_username: zjzsoftblog
 # Share component is depend on Comment so we can NOT use share only.
 duoshuo_share: true                     # set to false if you want to use Comment without Sharing
 
@@ -73,7 +73,7 @@ livere_uid: MTAyMC8yODkzOC81NTA3
 
 # Google Analytics
 ga_track_id: 'UA-49627206-1'            # Format: UA-xxxxxx-xx
-ga_domain: wblearn.github.io
+ga_domain: zjzsoft.github.io
 
 
 
@@ -118,19 +118,10 @@ defaults:
 # Friends
 friends: [
     {
-        title: "wblearn的微博",
-        href: "http://weibo.com/wudalanggd"
+        title: "zjzsoft的主页",
+        href: "http://www.ycmaths.com"
     },{
-        title: "study video",
-        href: "https://wblearn.github.io/study-video"
-    },{
-        title: "垠神的博客",
-        href: "http://www.yinwang.org/"
-    },{
-        title: "阮一峰的网络日志",
-        href: "https://www.ruanyifeng.com/blog/"
-    },{
-        title: "唐巧的博客",
-        href: "http://blog.devtang.com/"
+        title: "zjzsoft的博客",
+        href: "http://zjzsoft.github.io/"
     }
 ]
