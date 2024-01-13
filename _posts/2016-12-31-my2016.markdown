@@ -2,7 +2,7 @@
 layout:     post
 title:      "《十不足》"
 date:       2016-12-31 00:00:00
-author:     "朱载堉【明】"
+author:     "zjzsoft"
 header-img: "img/post-zj-2016.jpg"
 tags:
     - 
@@ -16,6 +16,7 @@ tags:
 ---
 
 <h2 i="《十不足》">《十不足》</h2>
+
 朱载堉【明】<br>
 
 终日奔忙只为饥，才得有食又思衣。<br>
