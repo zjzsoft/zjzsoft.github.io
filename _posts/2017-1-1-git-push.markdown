@@ -12,7 +12,7 @@ tags:
 
 ---
 
-![](http://wblearn.github.io/img/in-post/public/20170101121417088.png)
+![](http://zjzsoft.github.io/img/in-post/public/20170101121417088.png)
 
 **有时候往GitHub上提交东西的时候会因为remote repository上有东西更新了但是local repository 没有更新而造成提交失败**
 
