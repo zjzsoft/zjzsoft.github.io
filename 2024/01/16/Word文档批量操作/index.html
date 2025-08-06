@@ -1,0 +1,1846 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="Word文档批量操作, ZJZ&#39;s Blogs">
+    <meta name="description" content=" 部分功能尚需完善，敬请期待．．．
+先上图：
+主界面main.aardio代码：import fonts.fontAwesome;
+import win.ui;
+&amp;#x2F;&amp;#x2F;fonts.addFamily($&amp;quot;D:\P">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="referrer" content="no-referrer-when-downgrade">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+    <title>Word文档批量操作 | ZJZ&#39;s Blogs</title>
+    <link rel="icon" type="image/png" href="/favicon.png">
+    
+
+
+    <!-- bg-cover style     -->
+
+
+
+<link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.min.css">
+<link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+<link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+<link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+<link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+<link rel="stylesheet" type="text/css" href="/css/matery.css">
+<link rel="stylesheet" type="text/css" href="/css/my.css">
+<link rel="stylesheet" type="text/css" href="/css/dark.css" media="none" onload="if(media!='all')media='all'">
+
+
+
+
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+    <link rel="stylesheet" href="/css/post.css">
+
+
+
+
+    
+        <link rel="stylesheet" type="text/css" href="/css/reward.css">
+    
+
+
+
+    <script src="/libs/jquery/jquery-3.6.0.min.js"></script>
+
+<meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="ZJZ's Blogs" type="application/atom+xml">
+</head>
+
+
+<body>
+    <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">ZJZ&#39;s Blogs</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>首页</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/tags" class="waves-effect waves-light">
+      
+      <i class="fas fa-tags" style="zoom: 0.6;"></i>
+      
+      <span>标签</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/categories" class="waves-effect waves-light">
+      
+      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
+      
+      <span>分类</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/archives" class="waves-effect waves-light">
+      
+      <i class="fas fa-archive" style="zoom: 0.6;"></i>
+      
+      <span>归档</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>关于</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/contact" class="waves-effect waves-light">
+      
+      <i class="fas fa-comments" style="zoom: 0.6;"></i>
+      
+      <span>留言板</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/friends" class="waves-effect waves-light">
+      
+      <i class="fas fa-address-book" style="zoom: 0.6;"></i>
+      
+      <span>友情链接</span>
+    </a>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+  <li>
+    <a href="javascript:;" class="waves-effect waves-light" onclick="switchNightMode()" title="深色/浅色模式" >
+      <i id="sum-moon-icon" class="fas fa-sun" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">ZJZ&#39;s Blogs</div>
+        <div class="logo-desc">
+            
+            Never really desperate, only the lost of the soul.
+            
+        </div>
+    </div>
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			首页
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/tags" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-tags"></i>
+			
+			标签
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/categories" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-bookmark"></i>
+			
+			分类
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/archives" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-archive"></i>
+			
+			归档
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/about" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-user-circle"></i>
+			
+			关于
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/contact" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-comments"></i>
+			
+			留言板
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/friends" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-address-book"></i>
+			
+			友情链接
+		</a>
+          
+        </li>
+        
+        
+        <li><div class="divider"></div></li>
+        <li>
+            <a href="https://github.com/blinkfox/hexo-theme-matery" class="waves-effect waves-light" target="_blank">
+                <i class="fab fa-github-square fa-fw"></i>Fork Me
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+
+        </div>
+
+        
+            <style>
+    .nav-transparent .github-corner {
+        display: none !important;
+    }
+
+    .github-corner {
+        position: absolute;
+        z-index: 10;
+        top: 0;
+        right: 0;
+        border: 0;
+        transform: scale(1.1);
+    }
+
+    .github-corner svg {
+        color: #0f9d58;
+        fill: #fff;
+        height: 64px;
+        width: 64px;
+    }
+
+    .github-corner:hover .octo-arm {
+        animation: a 0.56s ease-in-out;
+    }
+
+    .github-corner .octo-arm {
+        animation: none;
+    }
+
+    @keyframes a {
+        0%,
+        to {
+            transform: rotate(0);
+        }
+        20%,
+        60% {
+            transform: rotate(-25deg);
+        }
+        40%,
+        80% {
+            transform: rotate(10deg);
+        }
+    }
+</style>
+
+<a href="https://github.com/blinkfox/hexo-theme-matery" class="github-corner tooltipped hide-on-med-and-down" target="_blank"
+   data-tooltip="Fork Me" data-position="left" data-delay="50">
+    <svg viewBox="0 0 250 250" aria-hidden="true">
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
+              fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
+        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
+              fill="currentColor" class="octo-body"></path>
+    </svg>
+</a>
+        
+    </nav>
+
+</header>
+
+    
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/11.jpg')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title">Word文档批量操作</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/aardio/">
+                                <span class="chip bg-color">aardio</span>
+                            </a>
+                        
+                            <a href="/tags/word/">
+                                <span class="chip bg-color">word</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/%E7%BC%96%E7%A8%8B/" class="post-category">
+                                编程
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2024-01-16
+                </div>
+                
+
+                
+
+                
+
+                
+
+                
+            </div>
+        </div>
+        <hr class="clearfix">
+
+        
+        <!-- 是否加载使用自带的 prismjs. -->
+        <link rel="stylesheet" href="/libs/prism/prism.min.css">
+        
+
+        
+
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <p> 部分功能尚需完善，敬请期待．．．</p>
+<h2 id="先上图："><a href="#先上图：" class="headerlink" title="先上图："></a>先上图：</h2><p><img src="/images/Word%E6%96%87%E6%A1%A3%E6%89%B9%E9%87%8F%E6%93%8D%E4%BD%9C/Word%E6%96%87%E6%A1%A3%E6%89%B9%E9%87%8F%E6%93%8D%E4%BD%9C1.png" alt="Word文档批量操作1"><br><img src="/images/Word%E6%96%87%E6%A1%A3%E6%89%B9%E9%87%8F%E6%93%8D%E4%BD%9C/Word%E6%96%87%E6%A1%A3%E6%89%B9%E9%87%8F%E6%93%8D%E4%BD%9C2.png" alt="Word文档批量操作2"><br><img src="/images/Word%E6%96%87%E6%A1%A3%E6%89%B9%E9%87%8F%E6%93%8D%E4%BD%9C/Word%E6%96%87%E6%A1%A3%E6%89%B9%E9%87%8F%E6%93%8D%E4%BD%9C3.png" alt="Word文档批量操作3"><br><img src="/images/Word%E6%96%87%E6%A1%A3%E6%89%B9%E9%87%8F%E6%93%8D%E4%BD%9C/Word%E6%96%87%E6%A1%A3%E6%89%B9%E9%87%8F%E6%93%8D%E4%BD%9C4.png" alt="Word文档批量操作4"></p>
+<h2 id="主界面main-aardio代码："><a href="#主界面main-aardio代码：" class="headerlink" title="主界面main.aardio代码："></a>主界面main.aardio代码：</h2><pre class="line-numbers language-aardio" data-language="aardio"><code class="language-aardio">import fonts.fontAwesome;
+import win.ui;
+&#x2F;&#x2F;fonts.addFamily($&quot;D:\Program Files (x86)\aardio\lib\fonts\iconfont.ttf&quot;);
+&#x2F;*DSG&#123;&#123;*&#x2F;
+mainForm &#x3D; win.form(text&#x3D;&quot;Word批量操作&quot;;right&#x3D;960;bottom&#x3D;640;bgcolor&#x3D;16777215;border&#x3D;&quot;none&quot;;max&#x3D;false)
+mainForm.add(
+caption&#x3D;&#123;cls&#x3D;&quot;bkplus&quot;;text&#x3D;&quot;Word文件批量操作&quot;;left&#x3D;45;top&#x3D;10;right&#x3D;205;bottom&#x3D;30;color&#x3D;16777120;dl&#x3D;1;dt&#x3D;1;font&#x3D;LOGFONT(h&#x3D;-18);z&#x3D;3&#125;;
+custom&#x3D;&#123;cls&#x3D;&quot;custom&quot;;left&#x3D;0;top&#x3D;40;right&#x3D;960;bottom&#x3D;640;bgcolor&#x3D;16777215;db&#x3D;1;dl&#x3D;1;dr&#x3D;1;dt&#x3D;1;z&#x3D;8&#125;;
+logo&#x3D;&#123;cls&#x3D;&quot;bkplus&quot;;left&#x3D;8;top&#x3D;8;right&#x3D;37;bottom&#x3D;33;background&#x3D;&quot;E:\BaiduSyncdisk\编程\素材\word图标.png&quot;;color&#x3D;16776960;dl&#x3D;1;dt&#x3D;1;font&#x3D;LOGFONT(h&#x3D;-18;name&#x3D;&#39;FontAwesome&#39;);z&#x3D;2&#125;;
+nav1Rename&#x3D;&#123;cls&#x3D;&quot;plus&quot;;text&#x3D;&quot;文件更名&quot;;left&#x3D;250;top&#x3D;5;right&#x3D;400;bottom&#x3D;40;align&#x3D;&quot;left&quot;;color&#x3D;16777215;dl&#x3D;1;dt&#x3D;1;font&#x3D;LOGFONT(h&#x3D;-18);iconStyle&#x3D;&#123;align&#x3D;&quot;left&quot;;font&#x3D;LOGFONT(h&#x3D;-19;name&#x3D;&#39;FontAwesome&#39;);padding&#x3D;&#123;left&#x3D;12;top&#x3D;4&#125;&#125;;iconText&#x3D;&#39;\uF0AE&#39;;notify&#x3D;1;paddingLeft&#x3D;1;paddingRight&#x3D;1;paddingTop&#x3D;3;textPadding&#x3D;&#123;left&#x3D;39;bottom&#x3D;1&#125;;x&#x3D;0.5;y&#x3D;0.2;z&#x3D;4&#125;;
+nav2Format&#x3D;&#123;cls&#x3D;&quot;plus&quot;;text&#x3D;&quot;格式转换&quot;;left&#x3D;400;top&#x3D;5;right&#x3D;550;bottom&#x3D;40;align&#x3D;&quot;left&quot;;color&#x3D;16777215;dl&#x3D;1;dt&#x3D;1;font&#x3D;LOGFONT(h&#x3D;-18);iconStyle&#x3D;&#123;align&#x3D;&quot;left&quot;;font&#x3D;LOGFONT(h&#x3D;-19;name&#x3D;&#39;FontAwesome&#39;);padding&#x3D;&#123;left&#x3D;12;top&#x3D;4&#125;&#125;;iconText&#x3D;&#39;\uF1C2&#39;;notify&#x3D;1;paddingLeft&#x3D;1;paddingRight&#x3D;1;paddingTop&#x3D;3;textPadding&#x3D;&#123;left&#x3D;39;bottom&#x3D;1&#125;;x&#x3D;0.5;y&#x3D;0.2;z&#x3D;5&#125;;
+nav3PageSet&#x3D;&#123;cls&#x3D;&quot;plus&quot;;text&#x3D;&quot;页面设置&quot;;left&#x3D;550;top&#x3D;5;right&#x3D;700;bottom&#x3D;40;align&#x3D;&quot;left&quot;;color&#x3D;16777215;dl&#x3D;1;dt&#x3D;1;font&#x3D;LOGFONT(h&#x3D;-18);iconStyle&#x3D;&#123;align&#x3D;&quot;left&quot;;font&#x3D;LOGFONT(h&#x3D;-19;name&#x3D;&#39;FontAwesome&#39;);padding&#x3D;&#123;left&#x3D;12;top&#x3D;4&#125;&#125;;iconText&#x3D;&#39;\uF1DE&#39;;notify&#x3D;1;paddingLeft&#x3D;1;paddingRight&#x3D;1;paddingTop&#x3D;3;textPadding&#x3D;&#123;left&#x3D;39;bottom&#x3D;1&#125;;x&#x3D;0.5;y&#x3D;0.2;z&#x3D;6&#125;;
+nav4RePlace&#x3D;&#123;cls&#x3D;&quot;plus&quot;;text&#x3D;&quot;内容替换&quot;;left&#x3D;700;top&#x3D;5;right&#x3D;850;bottom&#x3D;40;align&#x3D;&quot;left&quot;;color&#x3D;16777215;dl&#x3D;1;dt&#x3D;1;font&#x3D;LOGFONT(h&#x3D;-18);iconStyle&#x3D;&#123;align&#x3D;&quot;left&quot;;font&#x3D;LOGFONT(h&#x3D;-19;name&#x3D;&#39;FontAwesome&#39;);padding&#x3D;&#123;left&#x3D;12;top&#x3D;4&#125;&#125;;iconText&#x3D;&#39;\uF079&#39;;notify&#x3D;1;paddingLeft&#x3D;1;paddingRight&#x3D;1;paddingTop&#x3D;3;textPadding&#x3D;&#123;left&#x3D;39;bottom&#x3D;1&#125;;x&#x3D;0.5;y&#x3D;0.2;z&#x3D;7&#125;;
+titleBar&#x3D;&#123;cls&#x3D;&quot;bkplus&quot;;left&#x3D;0;top&#x3D;0;right&#x3D;962;bottom&#x3D;41;bgcolor&#x3D;14977280;dl&#x3D;1;dr&#x3D;1;dt&#x3D;1;z&#x3D;1&#125;
+)
+&#x2F;*&#125;&#125;*&#x2F;
+
+import win.ui.simpleWindow;
+win.ui.simpleWindow( mainForm );
+
+import win.ui.tabs;
+var tbs &#x3D; win.ui.tabs( 
+	mainForm.nav1Rename,
+	mainForm.nav2Format,
+	mainForm.nav3PageSet,
+	mainForm.nav4RePlace
+);
+	
+tbs.skin(&#123;
+	foreground&#x3D;&#123;
+		active&#x3D;0xFFFFFFFF;
+		default&#x3D;0x00FFFFFF;
+		hover&#x3D;0x38FFFFFF
+	&#125;;
+	color&#x3D;&#123;
+		default&#x3D;0xFFFFFFFF; 
+	&#125;;
+	checked&#x3D;&#123;
+		foreground&#x3D;&#123;default&#x3D;0xFFFFFFFF;&#125;; 
+		color&#x3D;&#123;default&#x3D;0xFF42A875;&#125;;
+	&#125;
+&#125;)
+	
+tbs.loadForm(1,&quot;\dlg\nav1Rename.aardio&quot; );  
+tbs.loadForm(2,&quot;\dlg\nav2Format.aardio&quot; );  
+tbs.loadForm(3,&quot;\dlg\nav3PageSet.aardio&quot; ); 
+tbs.loadForm(4,&quot;\dlg\nav4RePlace.aardio&quot; ); 
+tbs.selIndex &#x3D; 1; 
+
+mainForm.show();
+return win.loopMessage(); <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h2 id="nav1Rename-aardio代码："><a href="#nav1Rename-aardio代码：" class="headerlink" title="nav1Rename.aardio代码："></a>nav1Rename.aardio代码：</h2><pre class="line-numbers language-aardio" data-language="aardio"><code class="language-aardio">import fonts.fontAwesome;
+import win.ui;
+&#x2F;*DSG&#123;&#123;*&#x2F;
+var winform &#x3D; win.form(text&#x3D;&quot;文件更名&quot;;right&#x3D;960;bottom&#x3D;640)
+winform.add(
+btnOpen&#x3D;&#123;cls&#x3D;&quot;plus&quot;;text&#x3D;&#39;\uF115   选择目录 &#39;;left&#x3D;160;top&#x3D;580;right&#x3D;344;bottom&#x3D;616;bgcolor&#x3D;11580047;db&#x3D;1;dl&#x3D;1;font&#x3D;LOGFONT(h&#x3D;-18;name&#x3D;&#39;FontAwesome&#39;);notify&#x3D;1;tabstop&#x3D;1;z&#x3D;10&#125;;
+btnRename&#x3D;&#123;cls&#x3D;&quot;plus&quot;;text&#x3D;&#39;\uF021   开始更名&#39;;left&#x3D;581;top&#x3D;580;right&#x3D;765;bottom&#x3D;616;bgcolor&#x3D;11580047;db&#x3D;1;dr&#x3D;1;font&#x3D;LOGFONT(h&#x3D;-18;name&#x3D;&#39;FontAwesome&#39;);notify&#x3D;1;tabstop&#x3D;1;z&#x3D;2&#125;;
+chkTest&#x3D;&#123;cls&#x3D;&quot;plus&quot;;text&#x3D;&#39;\uF0C8 包含子目录&#39;;left&#x3D;372;top&#x3D;580;right&#x3D;512;bottom&#x3D;616;align&#x3D;&quot;left&quot;;db&#x3D;1;dl&#x3D;1;font&#x3D;LOGFONT(h&#x3D;-16;name&#x3D;&#39;FontAwesome&#39;);notify&#x3D;1;z&#x3D;3&#125;;
+edit&#x3D;&#123;cls&#x3D;&quot;edit&quot;;left&#x3D;30;top&#x3D;46;right&#x3D;930;bottom&#x3D;72;dl&#x3D;1;dr&#x3D;1;dt&#x3D;1;edge&#x3D;1;font&#x3D;LOGFONT(h&#x3D;-14);multiline&#x3D;1;z&#x3D;1&#125;;
+edit2&#x3D;&#123;cls&#x3D;&quot;edit&quot;;left&#x3D;30;top&#x3D;76;right&#x3D;930;bottom&#x3D;532;color&#x3D;6908265;db&#x3D;1;dl&#x3D;1;dr&#x3D;1;dt&#x3D;1;edge&#x3D;1;font&#x3D;LOGFONT(h&#x3D;-14);multiline&#x3D;1;vscroll&#x3D;1;z&#x3D;8&#125;;
+edit3&#x3D;&#123;cls&#x3D;&quot;edit&quot;;left&#x3D;122;top&#x3D;14;right&#x3D;462;bottom&#x3D;40;ah&#x3D;1;aw&#x3D;1;dl&#x3D;1;dt&#x3D;1;edge&#x3D;1;font&#x3D;LOGFONT(h&#x3D;-15);z&#x3D;4&#125;;
+edit4&#x3D;&#123;cls&#x3D;&quot;edit&quot;;left&#x3D;530;top&#x3D;14;right&#x3D;930;bottom&#x3D;40;ah&#x3D;1;aw&#x3D;1;dr&#x3D;1;dt&#x3D;1;edge&#x3D;1;font&#x3D;LOGFONT(h&#x3D;-15);multiline&#x3D;1;z&#x3D;5&#125;;
+progressplus&#x3D;&#123;cls&#x3D;&quot;plus&quot;;left&#x3D;30;top&#x3D;540;right&#x3D;930;bottom&#x3D;562;align&#x3D;&quot;right&quot;;bgcolor&#x3D;14803425;db&#x3D;1;dl&#x3D;1;dr&#x3D;1;edge&#x3D;1;forecolor&#x3D;48896;notify&#x3D;1;z&#x3D;9&#125;;
+static3&#x3D;&#123;cls&#x3D;&quot;static&quot;;text&#x3D;&quot;关键字：把&quot;;left&#x3D;30;top&#x3D;17;right&#x3D;130;bottom&#x3D;40;dl&#x3D;1;dt&#x3D;1;font&#x3D;LOGFONT(h&#x3D;-15);transparent&#x3D;1;z&#x3D;6&#125;;
+static4&#x3D;&#123;cls&#x3D;&quot;static&quot;;text&#x3D;&quot;替换为&quot;;left&#x3D;472;top&#x3D;17;right&#x3D;525;bottom&#x3D;40;font&#x3D;LOGFONT(h&#x3D;-15);transparent&#x3D;1;z&#x3D;7&#125;
+)
+&#x2F;*&#125;&#125;*&#x2F;
+
+import fsys;
+import fsys.dlg.dir;
+&#x2F;&#x2F;设置进度区间，可自动切换到进度条显示模式
+winform.progressplus.setProgressRange(1,100);
+&#x2F;&#x2F;进度改变时会触发下面的函数,注意前景图的九宫格切图左边界应当指定为显示 1% 的宽度
+winform.progressplus.onPosChanged &#x3D; function( pos )&#123;
+	winform.progressplus.text &#x3D;  winform.progressplus.progressPercentage + &quot;% &quot;
+&#125;
+import style;
+winform.chkTest.skin(style.checkBox);
+winform.chkTest.checked&#x3D;true;
+winform.btnOpen.skin(style.button);
+winform.btnRename.skin(style.button);
+
+&#x2F;&#x2F; 选择目录下的所有文件
+winform.btnOpen.oncommand &#x3D; function(id,event)&#123;
+	var path &#x3D; fsys.dlg.dir(, winform, &#39;请选择需操作的文件目录&#39;) if (not path) &#123;
+		return;
+	&#125;
+
+	global.WpsFiles &#x3D; &#123;&#125;;
+	fsys.enum(path, &quot;*.*&quot;,
+		function(dir, filename, fullpath, findData) &#123;
+
+			if (filename) &#123;
+				table.push(WpsFiles, fullpath);
+			&#125;
+		&#125;,
+		winform.chkTest.checked);
+	winform.edit.text&#x3D;path+&quot; 下共有&quot;+#WpsFiles+&quot;个文件。&quot;;
+	winform.edit2.text&#x3D;&quot;&quot;;
+	&#x2F;&#x2F;winform.edit.printf(Ddir+&quot; 下共有&quot;+#WpsFiles+&quot;个文件。&quot;);
+	&#x2F;&#x2F;for (i &#x3D; 1;#WpsFiles; 1) &#123;
+	&#x2F;&#x2F;	winform.edit.printf(&#39;%s&#39;, WpsFiles[i]);
+	&#x2F;&#x2F;&#125;
+
+&#125;
+
+&#x2F;&#x2F; 更名
+winform.btnRename.oncommand &#x3D; function(id, event) &#123;
+	var ff,OldName,NewName;
+	&#x2F;&#x2F;var opendir&#x3D;winform.edit1.text;
+	winform.edit2.setsel(0,-1);
+	winform.edit2.clear();
+
+	for (i &#x3D; 1;#WpsFiles; 1) &#123;
+		var path &#x3D; WpsFiles[i];
+		&#x2F;&#x2F;var ext &#x3D; string.match(path,&quot;[^.]+$&quot;);
+		&#x2F;&#x2F;var ext &#x3D; fsys.getExtensionName(path);
+		var newPath &#x3D; path + &quot;.docx&quot;;
+
+		if (io.exist(newPath)) &#123;
+			continue;
+		&#125;
+
+		try &#123;
+
+            OldName&#x3D;path
+            NewName&#x3D;string.replace(OldName,winform.edit3.text,winform.edit4.text)
+            fsys.rename(OldName,NewName)
+            var str&#x3D;&quot;原文件名：&quot;+OldName+&#39;\r\n&#39;+&quot;新文件名：&quot;+NewName+&#39;\r\n&#39;
+	
+            winform.edit2.appendText(str);
+            winform.edit2.vScroll(7&#x2F;*_SB_BOTTOM*&#x2F;)
+			&#x2F;&#x2F;WpsFiles
+		&#125; catch(e) &#123;
+			&#x2F;&#x2F;continue;
+		&#125;
+		winform.progressplus.progressPos&#x3D;(i &#x2F; #WpsFiles) * 100;
+
+	&#125;
+
+	if (WpsObject) &#123;
+		com.Release(WpsObject);
+		WpsObject &#x3D; nil;
+	&#125;
+
+	winform.progressplus.text &#x3D; &quot;操作已完成！&quot;;
+
+&#125;
+winform.show();
+win.loopMessage();
+return winform;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h2 id="nav2Format-aardio代码："><a href="#nav2Format-aardio代码：" class="headerlink" title="nav2Format.aardio代码："></a>nav2Format.aardio代码：</h2><pre class="line-numbers language-aardio" data-language="aardio"><code class="language-aardio">import fonts.fontAwesome;
+import win.ui;
+&#x2F;*DSG&#123;&#123;*&#x2F;
+var winform &#x3D; win.form(text&#x3D;&quot;格式转换&quot;;right&#x3D;960;bottom&#x3D;640)
+winform.add(
+btnFormatConv&#x3D;&#123;cls&#x3D;&quot;plus&quot;;text&#x3D;&#39;\uF021   开始转换&#39;;left&#x3D;581;top&#x3D;580;right&#x3D;765;bottom&#x3D;616;bgcolor&#x3D;11580047;db&#x3D;1;dr&#x3D;1;font&#x3D;LOGFONT(h&#x3D;-18;name&#x3D;&#39;FontAwesome&#39;);notify&#x3D;1;tabstop&#x3D;1;z&#x3D;3&#125;;
+btnOpen&#x3D;&#123;cls&#x3D;&quot;plus&quot;;text&#x3D;&#39;\uF115   选择目录 &#39;;left&#x3D;160;top&#x3D;580;right&#x3D;344;bottom&#x3D;616;bgcolor&#x3D;11580047;db&#x3D;1;dl&#x3D;1;font&#x3D;LOGFONT(h&#x3D;-18;name&#x3D;&#39;FontAwesome&#39;);notify&#x3D;1;tabstop&#x3D;1;z&#x3D;11&#125;;
+chkTest&#x3D;&#123;cls&#x3D;&quot;plus&quot;;text&#x3D;&#39;\uF0C8 包含子目录&#39;;left&#x3D;372;top&#x3D;580;right&#x3D;512;bottom&#x3D;616;align&#x3D;&quot;left&quot;;db&#x3D;1;dl&#x3D;1;font&#x3D;LOGFONT(h&#x3D;-16;name&#x3D;&#39;FontAwesome&#39;);notify&#x3D;1;z&#x3D;4&#125;;
+edit&#x3D;&#123;cls&#x3D;&quot;edit&quot;;left&#x3D;30;top&#x3D;46;right&#x3D;930;bottom&#x3D;72;dl&#x3D;1;dr&#x3D;1;dt&#x3D;1;edge&#x3D;1;font&#x3D;LOGFONT(h&#x3D;-14);multiline&#x3D;1;z&#x3D;1&#125;;
+edit2&#x3D;&#123;cls&#x3D;&quot;edit&quot;;left&#x3D;30;top&#x3D;76;right&#x3D;930;bottom&#x3D;532;color&#x3D;6908265;db&#x3D;1;dl&#x3D;1;dr&#x3D;1;dt&#x3D;1;edge&#x3D;1;font&#x3D;LOGFONT(h&#x3D;-14);multiline&#x3D;1;vscroll&#x3D;1;z&#x3D;9&#125;;
+groupbox&#x3D;&#123;cls&#x3D;&quot;groupbox&quot;;left&#x3D;173;top&#x3D;4;right&#x3D;930;bottom&#x3D;41;hide&#x3D;1;z&#x3D;2&#125;;
+progressplus&#x3D;&#123;cls&#x3D;&quot;plus&quot;;left&#x3D;30;top&#x3D;540;right&#x3D;930;bottom&#x3D;562;align&#x3D;&quot;right&quot;;bgcolor&#x3D;14803425;db&#x3D;1;dl&#x3D;1;dr&#x3D;1;edge&#x3D;1;forecolor&#x3D;48896;notify&#x3D;1;z&#x3D;10&#125;;
+radioDoc&#x3D;&#123;cls&#x3D;&quot;plus&quot;;text&#x3D;&#39;Docx\u2192Doc&#39;;left&#x3D;206;top&#x3D;14;right&#x3D;363;bottom&#x3D;33;align&#x3D;&quot;left&quot;;font&#x3D;LOGFONT(h&#x3D;-21;name&#x3D;&#39;微软雅黑&#39;;weight&#x3D;700);iconStyle&#x3D;&#123;align&#x3D;&quot;left&quot;;font&#x3D;LOGFONT(h&#x3D;-13;name&#x3D;&#39;FontAwesome&#39;)&#125;;iconText&#x3D;&#39;\uF111 &#39;;notify&#x3D;1;textPadding&#x3D;&#123;left&#x3D;15&#125;;z&#x3D;5&#125;;
+radioDocx&#x3D;&#123;cls&#x3D;&quot;plus&quot;;text&#x3D;&#39;Doc\u2192Docx&#39;;left&#x3D;398;top&#x3D;14;right&#x3D;555;bottom&#x3D;33;align&#x3D;&quot;left&quot;;font&#x3D;LOGFONT(h&#x3D;-21;name&#x3D;&#39;微软雅黑&#39;;weight&#x3D;700);iconStyle&#x3D;&#123;align&#x3D;&quot;left&quot;;font&#x3D;LOGFONT(h&#x3D;-13;name&#x3D;&#39;FontAwesome&#39;)&#125;;iconText&#x3D;&#39;\uF111 &#39;;notify&#x3D;1;textPadding&#x3D;&#123;left&#x3D;15&#125;;z&#x3D;6&#125;;
+radioPdf&#x3D;&#123;cls&#x3D;&quot;plus&quot;;text&#x3D;&#39;Docx\u2192Pdf&#39;;left&#x3D;589;top&#x3D;14;right&#x3D;746;bottom&#x3D;33;align&#x3D;&quot;left&quot;;font&#x3D;LOGFONT(h&#x3D;-21;name&#x3D;&#39;微软雅黑&#39;;weight&#x3D;700);iconStyle&#x3D;&#123;align&#x3D;&quot;left&quot;;font&#x3D;LOGFONT(h&#x3D;-13;name&#x3D;&#39;FontAwesome&#39;)&#125;;iconText&#x3D;&#39;\uF111 &#39;;notify&#x3D;1;textPadding&#x3D;&#123;left&#x3D;15&#125;;z&#x3D;7&#125;;
+static3&#x3D;&#123;cls&#x3D;&quot;static&quot;;text&#x3D;&quot;选择转换格式：&quot;;left&#x3D;30;top&#x3D;9;right&#x3D;189;bottom&#x3D;35;dl&#x3D;1;dt&#x3D;1;font&#x3D;LOGFONT(h&#x3D;-21;name&#x3D;&#39;微软雅黑&#39;;weight&#x3D;700);transparent&#x3D;1;z&#x3D;8&#125;
+)
+&#x2F;*&#125;&#125;*&#x2F;
+
+import fsys;
+import fsys.dlg.dir;
+&#x2F;&#x2F;设置进度区间，可自动切换到进度条显示模式
+winform.progressplus.setProgressRange(1,100);
+&#x2F;&#x2F;进度改变时会触发下面的函数,注意前景图的九宫格切图左边界应当指定为显示 1% 的宽度
+winform.progressplus.onPosChanged &#x3D; function( pos )&#123;
+	winform.progressplus.text &#x3D;  winform.progressplus.progressPercentage + &quot;% &quot;
+&#125;
+import style;
+winform.chkTest.skin(style.checkBox);
+winform.chkTest.checked&#x3D;true;
+winform.btnOpen.skin(style.button);
+winform.btnFormatConv.skin(style.button);
+var radioDocx &#x3D;&#123;
+	group &#x3D; &quot;&quot;;
+    color &#x3D; &#123; 
+        hover &#x3D; 0xFFFF0000; 
+        active &#x3D; 0xFF00FF00;
+    &#125;
+    checked &#x3D; &#123;  
+    	iconText &#x3D; &#39;\uF058&#39;&#x2F;*_FA_CHECK_CIRCLE*&#x2F;
+    &#125; 	
+&#125;
+winform.radioDoc.skin(radioDocx) 
+winform.radioDocx.skin(radioDocx)  
+winform.radioPdf.skin(radioDocx)  
+winform.radioDoc.checked &#x3D; true;
+&#x2F;&#x2F; 选择目录下的所有文件
+winform.btnOpen.oncommand &#x3D; function(id,event)&#123;
+	var path &#x3D; fsys.dlg.dir(, winform, &#39;请选择需操作的文件目录&#39;) if (not path) &#123;
+		return;
+	&#125;
+
+	global.WpsFiles &#x3D; &#123;&#125;;
+	fsys.enum(path, &quot;*.doc&quot;,
+		function(dir, filename, fullpath, findData) &#123;
+
+			if (filename) &#123;
+				table.push(WpsFiles, fullpath);
+			&#125;
+		&#125;,
+		winform.chkTest.checked);
+	winform.edit.text&#x3D;path+&quot; 下共有&quot;+#WpsFiles+&quot;个文件。&quot;;
+	winform.edit2.text&#x3D;&quot;&quot;;
+&#125;
+
+&#x2F;&#x2F; 转换为docx
+winform.btnFormatConv.oncommand &#x3D; function(id, event) &#123;
+	var WpsObject &#x3D; com.CreateObject(&quot;KWPS.Application&quot;);
+	if (not WpsObject) &#123;
+		winform.msgbox(&quot;请先安装WPS专业版&quot;);
+		return;
+	&#125;
+
+	for (i &#x3D; 1;#WpsFiles; 1) &#123;
+		var path &#x3D; WpsFiles[i];
+		&#x2F;&#x2F;var ext &#x3D; string.match(path,&quot;[^.]+$&quot;);
+		&#x2F;&#x2F;var ext &#x3D; fsys.getExtensionName(path);
+		var newPath &#x3D; path + &quot;.docx&quot;;
+
+		if (io.exist(newPath)) &#123;
+			continue;
+		&#125;
+
+		try &#123;
+			WpsObject.Visible &#x3D; false;
+			WpsObject.Documents.Open(path);
+			if(winform.radioDocx.checked)&#123;
+				var docxname &#x3D; string.replace(path,&quot;\.doc$&quot;,&quot;.docx&quot;);
+				WpsObject.ActiveDocument.SaveAs2(docxname, 16);
+				WpsObject.ActiveDocument.Close();
+				var str&#x3D;&quot;原文件名：&quot;+path +&#39;\r\n&#39;+&quot;新文件名：&quot;+docxname+&#39;\r\n&#39;
+            	winform.edit2.appendText(str);
+            	winform.edit2.vScroll(7&#x2F;*_SB_BOTTOM*&#x2F;)
+            &#125;
+            elseif(winform.radioPdf.checked)&#123;
+				var pdfname &#x3D; string.replace(path,&quot;\.doc$&quot;,&quot;.pdf&quot;);
+				WpsObject.ActiveDocument.SaveAs2(pdfname, 17);
+				WpsObject.ActiveDocument.Close();
+				var str&#x3D;&quot;原文件名：&quot;+path +&#39;\r\n&#39;+&quot;新文件名：&quot;+pdfname+&#39;\r\n&#39;
+            	winform.edit2.appendText(str);
+            	winform.edit2.vScroll(7&#x2F;*_SB_BOTTOM*&#x2F;)            
+            &#125;
+            elseif(winform.radioDoc.checked)&#123;
+				var docname &#x3D; string.replace(path,&quot;\.docx&quot;,&quot;.doc&quot;);
+				WpsObject.ActiveDocument.SaveAs2(docname, 0);
+				WpsObject.ActiveDocument.Close();
+				var str&#x3D;&quot;原文件名：&quot;+path +&#39;\r\n&#39;+&quot;新文件名：&quot;+docname+&#39;\r\n&#39;
+            	winform.edit2.appendText(str);
+            	winform.edit2.vScroll(7&#x2F;*_SB_BOTTOM*&#x2F;)            
+            &#125;
+			&#x2F;&#x2F;WpsFiles
+		&#125; catch(e) &#123;
+			&#x2F;&#x2F;continue;
+		&#125;
+		winform.progressplus.progressPos&#x3D;(i &#x2F; #WpsFiles) * 100;
+		&#x2F;&#x2F;sleep(100);
+	&#125;
+
+	if (WpsObject) &#123;
+		com.Release(WpsObject);
+		WpsObject &#x3D; nil;
+	&#125;
+
+	winform.progressplus.text &#x3D; &quot;操作已完成！&quot;;
+
+&#125;
+
+
+winform.show();
+win.loopMessage();
+return winform;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h2 id="nav3PageSe-aardio代码："><a href="#nav3PageSe-aardio代码：" class="headerlink" title="nav3PageSe.aardio代码："></a>nav3PageSe.aardio代码：</h2><pre class="line-numbers language-aardio" data-language="aardio"><code class="language-aardio">import fonts.fontAwesome;
+import win.ui;
+&#x2F;*DSG&#123;&#123;*&#x2F;
+var winform &#x3D; win.form(text&#x3D;&quot;页面设置&quot;;right&#x3D;960;bottom&#x3D;640)
+winform.add(
+btnOpen&#x3D;&#123;cls&#x3D;&quot;plus&quot;;text&#x3D;&#39;\uF115   选择目录 &#39;;left&#x3D;51;top&#x3D;580;right&#x3D;235;bottom&#x3D;616;bgcolor&#x3D;11580047;db&#x3D;1;dl&#x3D;1;font&#x3D;LOGFONT(h&#x3D;-18;name&#x3D;&#39;FontAwesome&#39;);notify&#x3D;1;tabstop&#x3D;1;z&#x3D;11&#125;;
+btnReSet&#x3D;&#123;cls&#x3D;&quot;plus&quot;;text&#x3D;&#39;\uF0E2   重置&#39;;left&#x3D;509;top&#x3D;580;right&#x3D;690;bottom&#x3D;616;bgcolor&#x3D;11580047;db&#x3D;1;dr&#x3D;1;font&#x3D;LOGFONT(h&#x3D;-18;name&#x3D;&#39;FontAwesome&#39;);notify&#x3D;1;tabstop&#x3D;1;z&#x3D;7&#125;;
+btnRename&#x3D;&#123;cls&#x3D;&quot;plus&quot;;text&#x3D;&#39;\uF021   应用&#39;;left&#x3D;704;top&#x3D;528;right&#x3D;888;bottom&#x3D;566;bgcolor&#x3D;-5197169;db&#x3D;1;dr&#x3D;1;font&#x3D;LOGFONT(h&#x3D;-18;name&#x3D;&#39;FontAwesome&#39;);notify&#x3D;1;tabstop&#x3D;1;z&#x3D;4&#125;;
+btnSaveSet&#x3D;&#123;cls&#x3D;&quot;plus&quot;;text&#x3D;&#39;\uF0C7   保存&#39;;left&#x3D;702;top&#x3D;580;right&#x3D;886;bottom&#x3D;616;bgcolor&#x3D;11580047;db&#x3D;1;dr&#x3D;1;font&#x3D;LOGFONT(h&#x3D;-18;name&#x3D;&#39;FontAwesome&#39;);notify&#x3D;1;tabstop&#x3D;1;z&#x3D;6&#125;;
+chkTest&#x3D;&#123;cls&#x3D;&quot;plus&quot;;text&#x3D;&#39;\uF0C8 包含子目录&#39;;left&#x3D;265;top&#x3D;580;right&#x3D;405;bottom&#x3D;616;align&#x3D;&quot;left&quot;;db&#x3D;1;dl&#x3D;1;font&#x3D;LOGFONT(h&#x3D;-16;name&#x3D;&#39;FontAwesome&#39;);notify&#x3D;1;z&#x3D;5&#125;;
+combobox&#x3D;&#123;cls&#x3D;&quot;combobox&quot;;left&#x3D;456;top&#x3D;336;right&#x3D;632;bottom&#x3D;360;edge&#x3D;1;items&#x3D;&#123;&#125;;mode&#x3D;&quot;dropdown&quot;;z&#x3D;30&#125;;
+edit1&#x3D;&#123;cls&#x3D;&quot;edit&quot;;left&#x3D;32;top&#x3D;48;right&#x3D;932;bottom&#x3D;74;dl&#x3D;1;dr&#x3D;1;dt&#x3D;1;edge&#x3D;1;font&#x3D;LOGFONT(h&#x3D;-14);multiline&#x3D;1;z&#x3D;3&#125;;
+edit2&#x3D;&#123;cls&#x3D;&quot;edit&quot;;left&#x3D;32;top&#x3D;80;right&#x3D;932;bottom&#x3D;234;color&#x3D;6908265;db&#x3D;1;dl&#x3D;1;dr&#x3D;1;dt&#x3D;1;edge&#x3D;1;font&#x3D;LOGFONT(h&#x3D;-14);multiline&#x3D;1;vscroll&#x3D;1;z&#x3D;9&#125;;
+edit3&#x3D;&#123;cls&#x3D;&quot;edit&quot;;text&#x3D;&quot;Edit&quot;;left&#x3D;672;top&#x3D;312;right&#x3D;928;bottom&#x3D;360;edge&#x3D;1;multiline&#x3D;1;z&#x3D;18&#125;;
+editB&#x3D;&#123;cls&#x3D;&quot;edit&quot;;text&#x3D;&quot;18&quot;;left&#x3D;221;top&#x3D;342;right&#x3D;286;bottom&#x3D;367;edge&#x3D;1;multiline&#x3D;1;z&#x3D;15&#125;;
+editFB&#x3D;&#123;cls&#x3D;&quot;edit&quot;;text&#x3D;&quot;12&quot;;left&#x3D;221;top&#x3D;450;right&#x3D;286;bottom&#x3D;475;edge&#x3D;1;multiline&#x3D;1;z&#x3D;26&#125;;
+editHT&#x3D;&#123;cls&#x3D;&quot;edit&quot;;text&#x3D;&quot;12&quot;;left&#x3D;65;top&#x3D;450;right&#x3D;130;bottom&#x3D;475;edge&#x3D;1;multiline&#x3D;1;z&#x3D;25&#125;;
+editL&#x3D;&#123;cls&#x3D;&quot;edit&quot;;text&#x3D;&quot;18&quot;;left&#x3D;66;top&#x3D;378;right&#x3D;131;bottom&#x3D;403;edge&#x3D;1;multiline&#x3D;1;z&#x3D;16&#125;;
+editR&#x3D;&#123;cls&#x3D;&quot;edit&quot;;text&#x3D;&quot;18&quot;;left&#x3D;221;top&#x3D;379;right&#x3D;286;bottom&#x3D;404;edge&#x3D;1;multiline&#x3D;1;z&#x3D;17&#125;;
+editT&#x3D;&#123;cls&#x3D;&quot;edit&quot;;text&#x3D;&quot;18&quot;;left&#x3D;66;top&#x3D;339;right&#x3D;131;bottom&#x3D;364;edge&#x3D;1;multiline&#x3D;1;z&#x3D;23&#125;;
+groupbox&#x3D;&#123;cls&#x3D;&quot;groupbox&quot;;text&#x3D;&quot;页边距&quot;;left&#x3D;32;top&#x3D;304;right&#x3D;336;bottom&#x3D;416;edge&#x3D;1;font&#x3D;LOGFONT(h&#x3D;-14);transparent&#x3D;1;z&#x3D;1&#125;;
+groupbox2&#x3D;&#123;cls&#x3D;&quot;groupbox&quot;;text&#x3D;&quot;页眉页脚距边界&quot;;left&#x3D;32;top&#x3D;424;right&#x3D;336;bottom&#x3D;492;edge&#x3D;1;font&#x3D;LOGFONT(h&#x3D;-14);transparent&#x3D;1;z&#x3D;21&#125;;
+groupbox3&#x3D;&#123;cls&#x3D;&quot;groupbox&quot;;text&#x3D;&quot;纸张设置&quot;;left&#x3D;352;top&#x3D;304;right&#x3D;656;bottom&#x3D;416;edge&#x3D;1;font&#x3D;LOGFONT(h&#x3D;-14);z&#x3D;29&#125;;
+lbTip&#x3D;&#123;cls&#x3D;&quot;static&quot;;text&#x3D;&quot;页面设置：&quot;;left&#x3D;34;top&#x3D;272;right&#x3D;153;bottom&#x3D;299;db&#x3D;1;dl&#x3D;1;dr&#x3D;1;transparent&#x3D;1;z&#x3D;35&#125;;
+progressplus&#x3D;&#123;cls&#x3D;&quot;plus&quot;;left&#x3D;32;top&#x3D;240;right&#x3D;932;bottom&#x3D;262;align&#x3D;&quot;right&quot;;bgcolor&#x3D;14803425;db&#x3D;1;dl&#x3D;1;dr&#x3D;1;edge&#x3D;1;forecolor&#x3D;48896;notify&#x3D;1;z&#x3D;10&#125;;
+radioHX&#x3D;&#123;cls&#x3D;&quot;plus&quot;;text&#x3D;&quot;横向&quot;;left&#x3D;552;top&#x3D;376;right&#x3D;624;bottom&#x3D;395;align&#x3D;&quot;left&quot;;font&#x3D;LOGFONT(h&#x3D;-14);iconStyle&#x3D;&#123;align&#x3D;&quot;left&quot;;font&#x3D;LOGFONT(h&#x3D;-13;name&#x3D;&#39;FontAwesome&#39;)&#125;;iconText&#x3D;&#39;\uF111 &#39;;notify&#x3D;1;textPadding&#x3D;&#123;left&#x3D;15&#125;;z&#x3D;34&#125;;
+radioZX&#x3D;&#123;cls&#x3D;&quot;plus&quot;;text&#x3D;&quot;纵向&quot;;left&#x3D;472;top&#x3D;376;right&#x3D;544;bottom&#x3D;395;align&#x3D;&quot;left&quot;;font&#x3D;LOGFONT(h&#x3D;-14);iconStyle&#x3D;&#123;align&#x3D;&quot;left&quot;;font&#x3D;LOGFONT(h&#x3D;-13;name&#x3D;&#39;FontAwesome&#39;)&#125;;iconText&#x3D;&#39;\uF111 &#39;;notify&#x3D;1;textPadding&#x3D;&#123;left&#x3D;15&#125;;z&#x3D;33&#125;;
+spinB&#x3D;&#123;cls&#x3D;&quot;spin&quot;;left&#x3D;265;top&#x3D;344;right&#x3D;285;bottom&#x3D;368;z&#x3D;37&#125;;
+spinFB&#x3D;&#123;cls&#x3D;&quot;spin&quot;;left&#x3D;265;top&#x3D;451;right&#x3D;285;bottom&#x3D;474;z&#x3D;27&#125;;
+spinHT&#x3D;&#123;cls&#x3D;&quot;spin&quot;;left&#x3D;109;top&#x3D;451;right&#x3D;129;bottom&#x3D;474;z&#x3D;28&#125;;
+spinL&#x3D;&#123;cls&#x3D;&quot;spin&quot;;left&#x3D;110;top&#x3D;379;right&#x3D;130;bottom&#x3D;402;z&#x3D;20&#125;;
+spinR&#x3D;&#123;cls&#x3D;&quot;spin&quot;;left&#x3D;265;top&#x3D;380;right&#x3D;285;bottom&#x3D;403;z&#x3D;19&#125;;
+spinT&#x3D;&#123;cls&#x3D;&quot;spin&quot;;left&#x3D;110;top&#x3D;340;right&#x3D;130;bottom&#x3D;360;z&#x3D;36&#125;;
+static1&#x3D;&#123;cls&#x3D;&quot;static&quot;;text&#x3D;&quot;上                  毫米&quot;;left&#x3D;47;top&#x3D;340;right&#x3D;167;bottom&#x3D;362;font&#x3D;LOGFONT(h&#x3D;-14);transparent&#x3D;1;z&#x3D;2&#125;;
+static2&#x3D;&#123;cls&#x3D;&quot;static&quot;;text&#x3D;&quot;下                  毫米&quot;;left&#x3D;203;top&#x3D;346;right&#x3D;323;bottom&#x3D;368;font&#x3D;LOGFONT(h&#x3D;-14);transparent&#x3D;1;z&#x3D;12&#125;;
+static3&#x3D;&#123;cls&#x3D;&quot;static&quot;;text&#x3D;&quot;选择转换格式：&quot;;left&#x3D;30;top&#x3D;9;right&#x3D;189;bottom&#x3D;35;dl&#x3D;1;dt&#x3D;1;font&#x3D;LOGFONT(h&#x3D;-21;name&#x3D;&#39;微软雅黑&#39;;weight&#x3D;700);transparent&#x3D;1;z&#x3D;8&#125;;
+static4&#x3D;&#123;cls&#x3D;&quot;static&quot;;text&#x3D;&quot;左                  毫米&quot;;left&#x3D;47;top&#x3D;380;right&#x3D;167;bottom&#x3D;402;font&#x3D;LOGFONT(h&#x3D;-14);transparent&#x3D;1;z&#x3D;13&#125;;
+static5&#x3D;&#123;cls&#x3D;&quot;static&quot;;text&#x3D;&quot;右                  毫米&quot;;left&#x3D;203;top&#x3D;380;right&#x3D;323;bottom&#x3D;402;font&#x3D;LOGFONT(h&#x3D;-14);transparent&#x3D;1;z&#x3D;14&#125;;
+static6&#x3D;&#123;cls&#x3D;&quot;static&quot;;text&#x3D;&quot;上                  毫米&quot;;left&#x3D;47;top&#x3D;450;right&#x3D;167;bottom&#x3D;472;font&#x3D;LOGFONT(h&#x3D;-14);transparent&#x3D;1;z&#x3D;22&#125;;
+static7&#x3D;&#123;cls&#x3D;&quot;static&quot;;text&#x3D;&quot;下                  毫米&quot;;left&#x3D;203;top&#x3D;450;right&#x3D;320;bottom&#x3D;472;font&#x3D;LOGFONT(h&#x3D;-14);transparent&#x3D;1;z&#x3D;24&#125;;
+static8&#x3D;&#123;cls&#x3D;&quot;static&quot;;text&#x3D;&quot;纸张大小：&quot;;left&#x3D;368;top&#x3D;336;right&#x3D;464;bottom&#x3D;360;font&#x3D;LOGFONT(h&#x3D;-14);transparent&#x3D;1;z&#x3D;31&#125;;
+static9&#x3D;&#123;cls&#x3D;&quot;static&quot;;text&#x3D;&quot;纸张方向：&quot;;left&#x3D;368;top&#x3D;376;right&#x3D;464;bottom&#x3D;400;font&#x3D;LOGFONT(h&#x3D;-14);transparent&#x3D;1;z&#x3D;32&#125;
+)
+&#x2F;*&#125;&#125;*&#x2F;
+
+import fsys;
+import fsys.dlg.dir;
+var TMT,BMT,LMT,RMT,HTMT,FBMT;
+TMT&#x3D;18;BMT&#x3D;18;LMT&#x3D;18;RMT&#x3D;18;HTMT&#x3D;12;FBMT&#x3D;12;
+&#x2F;&#x2F;设置进度区间，可自动切换到进度条显示模式
+winform.progressplus.setProgressRange(1,100);
+&#x2F;&#x2F;进度改变时会触发下面的函数,注意前景图的九宫格切图左边界应当指定为显示 1% 的宽度
+winform.progressplus.onPosChanged &#x3D; function( pos )&#123;
+	winform.progressplus.text &#x3D;  winform.progressplus.progressPercentage + &quot;% &quot;
+&#125;
+import style;
+winform.chkTest.skin(style.checkBox);
+winform.chkTest.checked&#x3D;false;
+winform.btnOpen.skin(style.button);
+winform.btnSaveSet.skin(style.button);
+winform.btnReSet.skin(style.button);
+winform.btnRename.skin(style.button);
+winform.radioZX.skin(style.radio); 
+winform.radioHX.skin(style.radio);
+winform.radioZX.checked &#x3D; true;
+var itemData &#x3D; &#123;&quot;A3&quot;;&quot;A4&quot;;&quot;A5&quot;;&quot;B4&quot;;&quot;B5&quot;&#125;
+winform.combobox.items &#x3D; itemData;
+winform.combobox.selIndex&#x3D;2;
+
+&#x2F;&#x2F; 选择目录下的所有文件
+winform.btnOpen.oncommand &#x3D; function(id,event)&#123;
+	var path &#x3D; fsys.dlg.dir(, winform, &#39;请选择需操作的文件目录&#39;) if (not path) &#123;
+		return;
+	&#125;
+
+	global.WpsFiles &#x3D; &#123;&#125;;
+	fsys.enum(path, &quot;*.doc&quot;,
+		function(dir, filename, fullpath, findData) &#123;
+
+			if (filename) &#123;
+				table.push(WpsFiles, fullpath);
+			&#125;
+		&#125;,
+		winform.chkTest.checked);
+	winform.edit1.text&#x3D;path+&quot; 下共有&quot;+#WpsFiles+&quot;个文件。&quot;;
+&#125;
+
+
+&#x2F;&#x2F; 页面设置
+winform.btnSaveSet.oncommand &#x3D; function(id, event) &#123;
+
+	var WpsObject &#x3D; com.CreateObject(&quot;KWPS.Application&quot;);
+	if (not WpsObject) &#123;
+		winform.msgbox(&quot;请先安装WPS专业版&quot;);
+		return;
+	&#125;
+
+	for (i &#x3D; 1;#WpsFiles; 1) &#123;
+		var path &#x3D; WpsFiles[i];
+		&#x2F;&#x2F;var ext &#x3D; string.match(path,&quot;[^.]+$&quot;);
+		&#x2F;&#x2F;var ext &#x3D; fsys.getExtensionName(path);
+		var newPath &#x3D; path + &quot;.docx&quot;;
+
+		if (io.exist(newPath)) &#123;
+			continue;
+		&#125;
+
+		try &#123;
+			WpsObject.Visible &#x3D; false;
+			WpsObject.Documents.Open(path);
+			if(winform.radioDocx.checked)&#123;
+				var docxname &#x3D; string.replace(path,&quot;\.doc$&quot;,&quot;.docx&quot;);
+				WpsObject.ActiveDocument.SaveAs2(docxname, 16);
+				WpsObject.ActiveDocument.Close();
+				var str&#x3D;&quot;原文件名：&quot;+path +&#39;\r\n&#39;+&quot;新文件名：&quot;+docxname+&#39;\r\n&#39;
+            	winform.edit2.appendText(str);
+            	winform.edit2.vScroll(7&#x2F;*_SB_BOTTOM*&#x2F;)
+            &#125;
+            elseif(winform.radioPdf.checked)&#123;
+				var pdfname &#x3D; string.replace(path,&quot;\.doc$&quot;,&quot;.pdf&quot;);
+				WpsObject.ActiveDocument.SaveAs2(pdfname, 17);
+				WpsObject.ActiveDocument.Close();
+				var str&#x3D;&quot;原文件名：&quot;+path +&#39;\r\n&#39;+&quot;新文件名：&quot;+pdfname+&#39;\r\n&#39;
+            	winform.edit2.appendText(str);
+            	winform.edit2.vScroll(7&#x2F;*_SB_BOTTOM*&#x2F;)            
+            &#125;
+            elseif(winform.radioDoc.checked)&#123;
+				var docname &#x3D; string.replace(path,&quot;\.docx&quot;,&quot;.doc&quot;);
+				WpsObject.ActiveDocument.SaveAs2(docname, 0);
+				WpsObject.ActiveDocument.Close();
+				var str&#x3D;&quot;原文件名：&quot;+path +&#39;\r\n&#39;+&quot;新文件名：&quot;+docname+&#39;\r\n&#39;
+            	winform.edit2.appendText(str);
+            	winform.edit2.vScroll(7&#x2F;*_SB_BOTTOM*&#x2F;)            
+            &#125;
+			&#x2F;&#x2F;WpsFiles
+		&#125; catch(e) &#123;
+			&#x2F;&#x2F;continue;
+		&#125;
+		winform.progressplus.progressPos&#x3D;(i &#x2F; #WpsFiles) * 100;
+		&#x2F;&#x2F;sleep(100);
+	&#125;
+
+	if (WpsObject) &#123;
+		com.Release(WpsObject);
+		WpsObject &#x3D; nil;
+	&#125;
+
+	winform.progressplus.text &#x3D; &quot;操作已完成！&quot;;
+
+&#125;
+
+&#x2F;&#x2F;测试
+winform.btnRename.oncommand &#x3D; function(id,event)&#123;
+	var WpsObject &#x3D; com.CreateObject(&quot;Word.Application&quot;);
+	if (not WpsObject) &#123;
+		winform.msgbox(&quot;请先安装WPS专业版&quot;);
+		return;
+	&#125;
+
+	var fpath &#x3D;&quot;E:\!!第二章 函数与基本初等函数\第01讲 集合的概念与运算（原卷版）.docx&quot;;
+	winform.edit1.text&#x3D;fpath;
+	winform.edit2.text&#x3D;fpath+&#39;\r\n&#39;;
+	try &#123;
+		WpsObject.Visible &#x3D; false;
+		var doc&#x3D;WpsObject.Documents.Open(fpath);
+	
+		winform.edit2.appendText(doc.Sections(1).Headers(1).Range.Text+&#39;\n&#39;);
+		winform.edit2.appendText(doc.Sections(1).Footers(1).Range.Text+&#39;\n&#39;);
+		winform.edit2.appendText(winform.edit3.text +&#39;\r\n&#39;);
+		&#x2F;&#x2F;设置页面边距
+		doc.Sections(1).PageSetup.TopMargin &#x3D;WpsObject.CentimetersToPoints(TMT&#x2F;10);
+		doc.Sections(1).PageSetup.BottomMargin &#x3D;WpsObject.CentimetersToPoints(BMT&#x2F;10);
+		doc.Sections(1).PageSetup.LeftMargin &#x3D;WpsObject.CentimetersToPoints(LMT&#x2F;10);
+		doc.Sections(1).PageSetup.RightMargin &#x3D;WpsObject.CentimetersToPoints(RMT&#x2F;10);
+		
+		doc.Sections(1).PageSetup.HeaderDistance &#x3D;WpsObject.CentimetersToPoints(HTMT&#x2F;10);
+		doc.Sections(1).PageSetup.FooterDistance &#x3D;WpsObject.CentimetersToPoints(FBMT&#x2F;10);
+		&#x2F;&#x2F;设置纸张
+		
+		if(winform.combobox.selText&#x3D;&quot;A3&quot;)&#123;
+			doc.Sections(1).PageSetup.PaperSize &#x3D;WpsObject.wdPaperA3;&#x2F;&#x2F; 设置A3纸
+		&#125;
+		elseif(winform.combobox.selText&#x3D;&quot;A4&quot;)&#123;
+			doc.Sections(1).PageSetup.PaperSize &#x3D;WpsObject.wdPaperA4;&#x2F;&#x2F; 设置A4纸
+		&#125;
+		elseif(winform.combobox.selText&#x3D;&quot;A5&quot;)&#123;
+			doc.Sections(1).PageSetup.PaperSize &#x3D;WpsObject.wdPaperA5;&#x2F;&#x2F; 设置A5纸
+		&#125;
+		elseif(winform.combobox.selText&#x3D;&quot;B4&quot;)&#123;
+			doc.Sections(1).PageSetup.PaperSize &#x3D;WpsObject.wdPaperB4;&#x2F;&#x2F; 设置B4纸
+		&#125;
+		elseif(winform.combobox.selText&#x3D;&quot;B5&quot;)&#123;
+			doc.Sections(1).PageSetup.PaperSize &#x3D;WpsObject.wdPaperB5;&#x2F;&#x2F; 设置B5纸
+		&#125;
+		if(winform.radioHX.checked)&#123;
+        	doc.Sections(1).PageSetup.Orientation &#x3D; WpsObject.wdOrientLandscape; &#x2F;&#x2F; 设置纸张方向为横向
+        &#125;
+        elseif(winform.radioZX.checked)&#123;
+        	doc.Sections(1).PageSetup.Orientation &#x3D; WpsObject.wdOrientPortrait; &#x2F;&#x2F; 设置纸张方向为纵向
+		&#125;
+		&#x2F;***
+        &#x2F;&#x2F;设置分栏
+        &#x2F;&#x2F;file.sections[0]._sectPr.xpath(&#39;.&#x2F;w:cols&#39;)[0].set(qn(&#39;w:num&#39;), &#39;2&#39;) &#x2F;&#x2F;把第一节设置为2栏
+
+        &#x2F;&#x2F;设置段落间距
+        paragraph_format&#x3D;file.paragraphs[0].paragraph_format;
+        paragraph_format.space_before&#x3D;Pt(18);    &#x2F;&#x2F;段前间距
+        paragraph_format.space_after&#x3D;Pt(12);    &#x2F;&#x2F;段后间距
+        paragraph_format.line_spacing&#x3D;Pt(12);  &#x2F;&#x2F;行距		
+		
+		***&#x2F;
+		
+		&#x2F;&#x2F;doc.Sections(1).Headers(1).Range.Delete();    &#x2F;&#x2F;这样可以直接修改 页眉
+		doc.Sections(1).Headers(1).Range.LineStyle &#x3D; WpsObject.wdLineStyleNone;
+		doc.Sections(1).Footers(1).Range.Delete();    &#x2F;&#x2F;这样可以直接修改 页脚
+		doc.Sections(1).Footers(1).PageNumbers.Add(WpsObject.wdAlignPageNumberCenter); 
+		doc.Sections(1).Headers(1).IsLinkToPrevious&#x3D;true;
+		doc.Sections(1).Footers(1).IsLinkToPrevious&#x3D;true;
+		winform.edit2.appendText(doc.Sections(1).Footers(1).Range.Text+&#39;\n&#39;);
+		winform.edit2.appendText(TMT+&#39;\r\n&#39;);
+		&#x2F;****	
+		for(paragraph  in  file.paragraphs)&#123;
+			if(paragraph.style.name&#x3D;&#x3D;&#39;Normal&#39;)&#123;
+				paragraph.paragraph_format.line_spacing&#x3D;1.0;&#x2F;&#x2F;设置为单倍行距
+			&#125;
+		&#125;
+		****&#x2F;
+		winform.edit2.appendText(winform.spinT.text+&#39;\n&#39;);
+		for(i&#x3D;1;30;1)&#123;
+			winform.edit2.appendText(doc.Paragraphs(i).Range.Text+&#39;\n&#39;);
+		&#125;
+		winform.edit2.appendText(doc.Sections(1).Footers(1).Range.Text+&#39;\n&#39;);
+		&#x2F;&#x2F;var docxname &#x3D; string.replace(path,&quot;\.doc$&quot;,&quot;.docx&quot;);
+		&#x2F;&#x2F;WpsObject.ActiveDocument.SaveAs2(docxname, 16);
+		doc.close(true);
+		&#x2F;&#x2F;WpsObject.ActiveDocument.Close();
+
+		
+		var str&#x3D;&quot;文件名：&quot;+fpath +&#39;\r\n&#39;&#x2F;&#x2F;+&quot;新文件名：&quot;+docxname+&#39;\r\n&#39;
+        winform.edit2.appendText(str);
+        winform.edit2.vScroll(7&#x2F;*_SB_BOTTOM*&#x2F;)
+
+        
+		&#x2F;&#x2F;WpsFiles
+	&#125; catch(e) &#123;
+		&#x2F;&#x2F;continue;
+	&#125;
+	&#x2F;&#x2F;winform.progressplus.progressPos&#x3D;(i &#x2F; WpsFiles) * 100;
+	
+	if (WpsObject) &#123;
+		com.Release(WpsObject);
+		WpsObject &#x3D; nil;
+	&#125;
+	winform.progressplus.text &#x3D; &quot;操作已完成！&quot;;
+
+&#125;
+
+&#x2F;*指定 spin控件同步数值的文本框
+spin控件可以放在buddy(edit控件)内部靠左侧、靠右侧，
+也可以放在buddy(edit控件)外部靠左侧、靠右侧，调整窗口大小时spin控件会自动吸附在buddy(edit控件)对应侧。
+*&#x2F;
+
+
+winform.spinT.buddy &#x3D; winform.editT; 
+winform.spinT.setRange(1,100); &#x2F;&#x2F;一定要设置数值的上下限
+winform.spinT.pos &#x3D; TMT;&#x2F;&#x2F;设置数值
+winform.spinT.inc  &#x3D; 1;&#x2F;&#x2F;设置每次点击箭头的增减量（步长）
+winform.spinB.buddy &#x3D; winform.editB; 
+winform.spinB.setRange(1,100); &#x2F;&#x2F;一定要设置数值的上下限
+winform.spinB.pos &#x3D; BMT;&#x2F;&#x2F;设置数值
+winform.spinB.inc  &#x3D; 1;&#x2F;&#x2F;设置每次点击箭头的增减量（步长）
+winform.spinL.buddy &#x3D; winform.editL; 
+winform.spinL.setRange(1,100); &#x2F;&#x2F;一定要设置数值的上下限
+winform.spinL.pos &#x3D; LMT;&#x2F;&#x2F;设置数值
+winform.spinL.inc  &#x3D; 1;&#x2F;&#x2F;设置每次点击箭头的增减量（步长）
+winform.spinR.buddy &#x3D; winform.editR; 
+winform.spinR.setRange(1,100); &#x2F;&#x2F;一定要设置数值的上下限
+winform.spinR.pos &#x3D; RMT;&#x2F;&#x2F;设置数值
+winform.spinR.inc  &#x3D; 1;&#x2F;&#x2F;设置每次点击箭头的增减量（步长）
+winform.spinHT.buddy &#x3D; winform.editHT; 
+winform.spinHT.setRange(1,100); &#x2F;&#x2F;一定要设置数值的上下限
+winform.spinHT.pos &#x3D; HTMT;&#x2F;&#x2F;设置数值
+winform.spinHT.inc  &#x3D; 1;&#x2F;&#x2F;设置每次点击箭头的增减量（步长）
+winform.spinFB.buddy &#x3D; winform.editFB; 
+winform.spinFB.setRange(1,100); &#x2F;&#x2F;一定要设置数值的上下限
+winform.spinFB.pos &#x3D; FBMT;&#x2F;&#x2F;设置数值
+winform.spinFB.inc  &#x3D; 1;&#x2F;&#x2F;设置每次点击箭头的增减量（步长）
+
+&#x2F;&#x2F;处理spin事件
+winform.spinT.oncommand &#x3D; function(id,event,pos)&#123; 
+	if( pos &amp;&amp; event &#x3D;&#x3D; 0x4&#x2F;*_SB_THUMBPOSITION*&#x2F; )&#123;
+		TMT&#x3D; winform.editT.text
+	&#125;
+&#125;
+winform.spinB.oncommand &#x3D; function(id,event,pos)&#123; 
+	if( pos &amp;&amp; event &#x3D;&#x3D; 0x4&#x2F;*_SB_THUMBPOSITION*&#x2F; )&#123;
+		BMT&#x3D; winform.editB.text
+	&#125;
+&#125;
+winform.spinL.oncommand &#x3D; function(id,event,pos)&#123; 
+	if( pos &amp;&amp; event &#x3D;&#x3D; 0x4&#x2F;*_SB_THUMBPOSITION*&#x2F; )&#123;
+		LMT&#x3D; winform.editL.text
+	&#125;
+&#125;
+winform.spinR.oncommand &#x3D; function(id,event,pos)&#123; 
+	if( pos &amp;&amp; event &#x3D;&#x3D; 0x4&#x2F;*_SB_THUMBPOSITION*&#x2F; )&#123;
+		RMT&#x3D; winform.editR.text
+	&#125;
+&#125;
+winform.spinHT.oncommand &#x3D; function(id,event,pos)&#123; 
+	if( pos &amp;&amp; event &#x3D;&#x3D; 0x4&#x2F;*_SB_THUMBPOSITION*&#x2F; )&#123;
+		HTMT&#x3D; winform.editHT.text
+	&#125;
+&#125;
+winform.spinFB.oncommand &#x3D; function(id,event,pos)&#123; 
+	if( pos &amp;&amp; event &#x3D;&#x3D; 0x4&#x2F;*_SB_THUMBPOSITION*&#x2F; )&#123;
+		FBMT&#x3D; winform.editFB.text
+	&#125;
+&#125;
+
+winform.combobox.oncommand &#x3D; function(id,event)&#123;
+	winform.edit3.text&#x3D;&#39;WpsObject.wdPaper&#39;+winform.combobox.selText;
+&#125;
+
+winform.show();
+win.loopMessage();
+return winform;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h2 id="nav4RePlace-aardio代码："><a href="#nav4RePlace-aardio代码：" class="headerlink" title="nav4RePlace.aardio代码："></a>nav4RePlace.aardio代码：</h2><pre class="line-numbers language-aardio" data-language="aardio"><code class="language-aardio">import fonts.fontAwesome;
+import win.ui;
+&#x2F;*DSG&#123;&#123;*&#x2F;
+var winform &#x3D; win.form(text&#x3D;&quot;内容替换&quot;;right&#x3D;960;bottom&#x3D;640)
+winform.add(
+btnOpen&#x3D;&#123;cls&#x3D;&quot;plus&quot;;text&#x3D;&#39;\uF115   选择目录 &#39;;left&#x3D;160;top&#x3D;580;right&#x3D;344;bottom&#x3D;616;bgcolor&#x3D;11580047;db&#x3D;1;dl&#x3D;1;font&#x3D;LOGFONT(h&#x3D;-18;name&#x3D;&#39;FontAwesome&#39;);notify&#x3D;1;tabstop&#x3D;1;z&#x3D;6&#125;;
+btnReplace&#x3D;&#123;cls&#x3D;&quot;plus&quot;;text&#x3D;&#39;\uF021   开始替换&#39;;left&#x3D;581;top&#x3D;580;right&#x3D;765;bottom&#x3D;616;bgcolor&#x3D;11580047;db&#x3D;1;dr&#x3D;1;font&#x3D;LOGFONT(h&#x3D;-18;name&#x3D;&#39;FontAwesome&#39;);notify&#x3D;1;tabstop&#x3D;1;z&#x3D;2&#125;;
+chkTest&#x3D;&#123;cls&#x3D;&quot;plus&quot;;text&#x3D;&#39;\uF0C8 包含子目录&#39;;left&#x3D;372;top&#x3D;580;right&#x3D;512;bottom&#x3D;616;align&#x3D;&quot;left&quot;;db&#x3D;1;dl&#x3D;1;font&#x3D;LOGFONT(h&#x3D;-16;name&#x3D;&#39;FontAwesome&#39;);notify&#x3D;1;z&#x3D;3&#125;;
+edit&#x3D;&#123;cls&#x3D;&quot;edit&quot;;left&#x3D;30;top&#x3D;46;right&#x3D;930;bottom&#x3D;72;dl&#x3D;1;dr&#x3D;1;dt&#x3D;1;edge&#x3D;1;font&#x3D;LOGFONT(h&#x3D;-14);multiline&#x3D;1;z&#x3D;1&#125;;
+edit2&#x3D;&#123;cls&#x3D;&quot;edit&quot;;left&#x3D;30;top&#x3D;76;right&#x3D;930;bottom&#x3D;532;color&#x3D;6908265;db&#x3D;1;dl&#x3D;1;dr&#x3D;1;dt&#x3D;1;edge&#x3D;1;font&#x3D;LOGFONT(h&#x3D;-14);multiline&#x3D;1;vscroll&#x3D;1;z&#x3D;4&#125;;
+edit3&#x3D;&#123;cls&#x3D;&quot;edit&quot;;left&#x3D;120;top&#x3D;16;right&#x3D;460;bottom&#x3D;42;ah&#x3D;1;aw&#x3D;1;dl&#x3D;1;dt&#x3D;1;edge&#x3D;1;font&#x3D;LOGFONT(h&#x3D;-15);z&#x3D;7&#125;;
+edit4&#x3D;&#123;cls&#x3D;&quot;edit&quot;;left&#x3D;528;top&#x3D;16;right&#x3D;930;bottom&#x3D;42;ah&#x3D;1;aw&#x3D;1;dr&#x3D;1;dt&#x3D;1;edge&#x3D;1;font&#x3D;LOGFONT(h&#x3D;-15);multiline&#x3D;1;z&#x3D;8&#125;;
+progressplus&#x3D;&#123;cls&#x3D;&quot;plus&quot;;left&#x3D;30;top&#x3D;540;right&#x3D;930;bottom&#x3D;562;align&#x3D;&quot;right&quot;;bgcolor&#x3D;14803425;db&#x3D;1;dl&#x3D;1;dr&#x3D;1;edge&#x3D;1;forecolor&#x3D;48896;notify&#x3D;1;z&#x3D;5&#125;;
+static&#x3D;&#123;cls&#x3D;&quot;static&quot;;text&#x3D;&quot;关键字：把&quot;;left&#x3D;32;top&#x3D;16;right&#x3D;132;bottom&#x3D;39;dl&#x3D;1;dt&#x3D;1;font&#x3D;LOGFONT(h&#x3D;-15);transparent&#x3D;1;z&#x3D;9&#125;;
+static2&#x3D;&#123;cls&#x3D;&quot;static&quot;;text&#x3D;&quot;替换为&quot;;left&#x3D;472;top&#x3D;16;right&#x3D;525;bottom&#x3D;39;font&#x3D;LOGFONT(h&#x3D;-15);transparent&#x3D;1;z&#x3D;10&#125;
+)
+&#x2F;*&#125;&#125;*&#x2F;
+
+import fsys;
+import fsys.dlg.dir;
+&#x2F;&#x2F;设置进度区间，可自动切换到进度条显示模式
+winform.progressplus.setProgressRange(1,100);
+&#x2F;&#x2F;进度改变时会触发下面的函数,注意前景图的九宫格切图左边界应当指定为显示 1% 的宽度
+winform.progressplus.onPosChanged &#x3D; function( pos )&#123;
+	winform.progressplus.text &#x3D;  winform.progressplus.progressPercentage + &quot;% &quot;
+&#125;
+import style;
+winform.chkTest.skin(style.checkBox);
+winform.chkTest.checked&#x3D;true;
+winform.btnOpen.skin(style.button);
+winform.btnReplace.skin(style.button);
+
+&#x2F;&#x2F; 选择目录下的所有文件
+winform.btnOpen.oncommand &#x3D; function(id,event)&#123;
+	var path &#x3D; fsys.dlg.dir(, winform, &#39;请选择需操作的文件目录&#39;) if (not path) &#123;
+		return;
+	&#125;
+
+	global.WpsFiles &#x3D; &#123;&#125;;
+	fsys.enum(path, &quot;*.docx&quot;,
+		function(dir, filename, fullpath, findData) &#123;
+
+			if (filename) &#123;
+				table.push(WpsFiles, fullpath);
+			&#125;
+		&#125;,
+		winform.chkTest.checked);
+	winform.edit.text&#x3D;path+&quot; 下共有&quot;+#WpsFiles+&quot;个文件。&quot;;
+	winform.edit2.text&#x3D;&quot;&quot;;
+&#125;
+
+&#x2F;&#x2F; 替换内容
+winform.btnReplace.oncommand &#x3D; function(id, event) &#123;
+	var WpsObject &#x3D; com.CreateObject(&quot;KWPS.Application&quot;);
+	WpsObject.Visible &#x3D; false;	
+	if (not WpsObject) &#123;
+		winform.msgbox(&quot;请先安装WPS专业版&quot;);
+		return;
+	&#125;
+
+	for (i &#x3D; 1;#WpsFiles; 1) &#123;
+		var path &#x3D; WpsFiles[i];
+		var newPath &#x3D; path + &quot;.docx&quot;;
+		
+		if (io.exist(newPath)) &#123;
+			continue;
+		&#125;
+
+		try &#123;
+								
+			mydoc &#x3D; WpsObject.Documents.Open(path);
+			mydoc.ActiveDocument &#x3D; true;    			
+    		myrange &#x3D; mydoc.content;
+    		oldstr&#x3D;winform.edit3.text
+    		newstr&#x3D;winform.edit4.text
+    		myrange.find.execute(oldstr, False, False, False, False, False, True, 1, False, newstr, 2)
+    		
+    		
+			mydoc.Close(true);
+			winform.edit2.appendText(path +&#39;\r\n&#39;);
+            winform.edit2.vScroll(7&#x2F;*_SB_BOTTOM*&#x2F;);
+
+			&#x2F;&#x2F;WpsFiles
+		&#125; catch(e) &#123;
+			&#x2F;&#x2F;continue;
+		&#125;
+		winform.progressplus.progressPos&#x3D;(i &#x2F; #WpsFiles) * 100;
+		&#x2F;&#x2F;sleep(100);
+	&#125;
+
+	if (WpsObject) &#123;
+		com.Release(WpsObject);
+		WpsObject &#x3D; nil;
+	&#125;
+
+	winform.progressplus.text &#x3D; &quot;操作已完成！&quot;;
+
+&#125;
+
+
+winform.show();
+win.loopMessage();
+return winform;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+                
+            </div>
+            <hr/>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        
+            <div class="reprint__author">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-user">
+                        文章作者:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="/about" rel="external nofollow noreferrer">ZJZ</a>
+                </span>
+            </div>
+            <div class="reprint__type">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-link">
+                        文章链接:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="http://example.com/2024/01/16/Word%E6%96%87%E6%A1%A3%E6%89%B9%E9%87%8F%E6%93%8D%E4%BD%9C/">http://example.com/2024/01/16/Word%E6%96%87%E6%A1%A3%E6%89%B9%E9%87%8F%E6%93%8D%E4%BD%9C/</a>
+                </span>
+            </div>
+            <div class="reprint__notice">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-copyright">
+                        版权声明:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    本博客所有文章除特別声明外，均采用
+                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
+                    许可协议。转载请注明来源
+                    <a href="/about" target="_blank">ZJZ</a>
+                    !
+                </span>
+            </div>
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>复制成功，请遵循本文的转载规则</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            
+                                <a href="/tags/aardio/">
+                                    <span class="chip bg-color">aardio</span>
+                                </a>
+                            
+                                <a href="/tags/word/">
+                                    <span class="chip bg-color">word</span>
+                                </a>
+                            
+                        </div>
+                    
+                </div>
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+<div id="article-share">
+
+    
+    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <script src="/libs/share/js/social-share.min.js"></script>
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+                <div id="reward">
+    <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-medium waves-effect waves-light red">赏</a>
+
+    <!-- Modal Structure -->
+    <div id="rewardModal" class="modal">
+        <div class="modal-content">
+            <a class="close modal-close"><i class="fas fa-times"></i></a>
+            <h4 class="reward-title">你的支持是我前进的动力！</h4>
+            <div class="reward-content">
+                <div class="reward-tabs">
+                    <ul class="tabs row">
+                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
+                        <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
+                    </ul>
+                    <div id="alipay">
+                        <img src="/medias/reward/alipay.png" class="reward-img" alt="支付宝打赏二维码">
+                    </div>
+                    <div id="wechat">
+                        <img src="/medias/reward/wechat.png" class="reward-img" alt="微信打赏二维码">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('.tabs').tabs();
+    });
+</script>
+
+            
+        </div>
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+            <div class="card">
+                <a href="/2024/01/19/%E7%94%9F%E6%B4%BB%E7%9A%84%E6%99%BA%E6%85%A7/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/19.jpg" class="responsive-img" alt="生活的智慧">
+                        
+                        <span class="card-title">生活的智慧</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2024-01-19
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E6%97%A5%E5%B8%B8%E7%94%9F%E6%B4%BB/" class="post-category">
+                                    日常生活
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/%E9%97%B2%E8%B0%88/">
+                        <span class="chip bg-color">闲谈</span>
+                    </a>
+                    
+                    <a href="/tags/%E5%B8%B8%E8%AF%86/">
+                        <span class="chip bg-color">常识</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                本篇&nbsp;<i class="far fa-dot-circle"></i>
+            </div>
+            <div class="card">
+                <a href="/2024/01/16/Word%E6%96%87%E6%A1%A3%E6%89%B9%E9%87%8F%E6%93%8D%E4%BD%9C/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/11.jpg" class="responsive-img" alt="Word文档批量操作">
+                        
+                        <span class="card-title">Word文档批量操作</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2024-01-16
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E7%BC%96%E7%A8%8B/" class="post-category">
+                                    编程
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/aardio/">
+                        <span class="chip bg-color">aardio</span>
+                    </a>
+                    
+                    <a href="/tags/word/">
+                        <span class="chip bg-color">word</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
+
+
+  <!-- 是否加载使用自带的 prismjs. -->
+  <script type="text/javascript" src="/libs/prism/prism.min.js"></script>
+
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
+
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget card" style="background-color: white;">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('0'),
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
+    
+
+</main>
+
+
+
+
+    <footer class="page-footer bg-color">
+    
+        <link rel="stylesheet" href="/libs/aplayer/APlayer.min.css">
+<style>
+    .aplayer .aplayer-lrc p {
+        
+        display: none;
+        
+        font-size: 12px;
+        font-weight: 700;
+        line-height: 16px !important;
+    }
+
+    .aplayer .aplayer-lrc p.aplayer-lrc-current {
+        
+        display: none;
+        
+        font-size: 15px;
+        color: #42b983;
+    }
+
+    
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body {
+        left: -66px !important;
+    }
+
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body:hover {
+        left: 0px !important;
+    }
+
+    
+</style>
+<div class="">
+    
+    <div class="row">
+        <meting-js class="col l8 offset-l2 m10 offset-m1 s12"
+                   server="netease"
+                   type="playlist"
+                   id="503838841"
+                   fixed='true'
+                   autoplay='false'
+                   theme='#42b983'
+                   loop='all'
+                   order='random'
+                   preload='auto'
+                   volume='0.7'
+                   list-folded='true'
+        >
+        </meting-js>
+    </div>
+</div>
+
+<script src="/libs/aplayer/APlayer.min.js"></script>
+<script src="/libs/aplayer/Meting.min.js"></script>
+
+    
+
+    <div class="container row center-align"
+         style="margin-bottom: 0px !important;">
+        <div class="col s12 m8 l8 copy-right">
+            Copyright&nbsp;&copy;
+            
+                <span id="year">2019-2024</span>
+            
+            <a href="/about" target="_blank">ZJZ</a>
+            |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
+            |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
+            
+            <br>
+            
+            
+            
+                
+            
+            
+                <span id="busuanzi_container_site_pv">
+                &nbsp;|&nbsp;<i class="far fa-eye"></i>&nbsp;总访问量:&nbsp;
+                    <span id="busuanzi_value_site_pv" class="white-color"></span>
+            </span>
+            
+            
+                <span id="busuanzi_container_site_uv">
+                &nbsp;|&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;
+                    <span id="busuanzi_value_site_uv" class="white-color"></span>
+            </span>
+            
+            <br>
+
+            <!-- 运行天数提醒. -->
+            
+            <br>
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/zjzsoft" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fab fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:291473238@qq.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=291473238" class="tooltipped" target="_blank" data-tooltip="QQ联系我: 291473238" data-position="top" data-delay="50">
+        <i class="fab fa-qq"></i>
+    </a>
+
+
+
+
+
+
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+$(function () {
+    var searchFunc = function (path, search_id, content_id) {
+        'use strict';
+        $.ajax({
+            url: path,
+            dataType: "xml",
+            success: function (xmlResponse) {
+                // get the contents from search data
+                var datas = $("entry", xmlResponse).map(function () {
+                    return {
+                        title: $("title", this).text(),
+                        content: $("content", this).text(),
+                        url: $("url", this).text()
+                    };
+                }).get();
+                var $input = document.getElementById(search_id);
+                var $resultContent = document.getElementById(content_id);
+                $input.addEventListener('input', function () {
+                    var str = '<ul class=\"search-result-list\">';
+                    var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                    $resultContent.innerHTML = "";
+                    if (this.value.trim().length <= 0) {
+                        return;
+                    }
+                    // perform local searching
+                    datas.forEach(function (data) {
+                        var isMatch = true;
+                        var data_title = data.title.trim().toLowerCase();
+                        var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                        var data_url = data.url;
+                        data_url = data_url.indexOf('/') === 0 ? data.url : '/' + data_url;
+                        var index_title = -1;
+                        var index_content = -1;
+                        var first_occur = -1;
+                        // only match artiles with not empty titles and contents
+                        if (data_title !== '' && data_content !== '') {
+                            keywords.forEach(function (keyword, i) {
+                                index_title = data_title.indexOf(keyword);
+                                index_content = data_content.indexOf(keyword);
+                                if (index_title < 0 && index_content < 0) {
+                                    isMatch = false;
+                                } else {
+                                    if (index_content < 0) {
+                                        index_content = 0;
+                                    }
+                                    if (i === 0) {
+                                        first_occur = index_content;
+                                    }
+                                }
+                            });
+                        }
+                        // show search results
+                        if (isMatch) {
+                            str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                            var content = data.content.trim().replace(/<[^>]+>/g, "");
+                            if (first_occur >= 0) {
+                                // cut out 100 characters
+                                var start = first_occur - 20;
+                                var end = first_occur + 80;
+                                if (start < 0) {
+                                    start = 0;
+                                }
+                                if (start === 0) {
+                                    end = 100;
+                                }
+                                if (end > content.length) {
+                                    end = content.length;
+                                }
+                                var match_content = content.substr(start, end);
+                                // highlight all keywords
+                                keywords.forEach(function (keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    match_content = match_content.replace(regS, "<em class=\"search-keyword\">" + keyword + "</em>");
+                                });
+
+                                str += "<p class=\"search-result\">" + match_content + "...</p>"
+                            }
+                            str += "</li>";
+                        }
+                    });
+                    str += "</ul>";
+                    $resultContent.innerHTML = str;
+                });
+            }
+        });
+    };
+
+    searchFunc('/search.xml', 'searchInput', 'searchResult');
+});
+</script>
+
+    <!-- 白天和黑夜主题 -->
+<div class="stars-con">
+    <div id="stars"></div>
+    <div id="stars2"></div>
+    <div id="stars3"></div>  
+</div>
+
+<script>
+    function switchNightMode() {
+        $('<div class="Cuteen_DarkSky"><div class="Cuteen_DarkPlanet"></div></div>').appendTo($('body')),
+        setTimeout(function () {
+            $('body').hasClass('DarkMode') 
+            ? ($('body').removeClass('DarkMode'), localStorage.setItem('isDark', '0'), $('#sum-moon-icon').removeClass("fa-sun").addClass('fa-moon')) 
+            : ($('body').addClass('DarkMode'), localStorage.setItem('isDark', '1'), $('#sum-moon-icon').addClass("fa-sun").removeClass('fa-moon')),
+            
+            setTimeout(function () {
+            $('.Cuteen_DarkSky').fadeOut(1e3, function () {
+                $(this).remove()
+            })
+            }, 2e3)
+        })
+    }
+</script>
+
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+    <script src="/libs/materialize/materialize.min.js"></script>
+    <script src="/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="/libs/aos/aos.js"></script>
+    <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="/js/matery.js"></script>
+
+    
+
+    
+    
+    
+
+    <!-- 雪花特效 -->
+    
+
+    <!-- 鼠标星星特效 -->
+    
+
+     
+        <script src="https://ssl.captcha.qq.com/TCaptcha.js"></script>
+        <script src="/libs/others/TencentCaptcha.js"></script>
+        <button id="TencentCaptcha" data-appid="xxxxxxxxxx" data-cbfn="callback" type="button" hidden></button>
+    
+
+    <!-- Baidu Analytics -->
+
+    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    <script src="/libs/others/clicklove.js" async="async"></script>
+    
+    
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+    
+
+    <!--腾讯兔小巢-->
+    
+    
+
+    
+
+    
+
+    
+    <script src="/libs/instantpage/instantpage.js" type="module"></script>
+    
+
+</body>
+
+</html>
